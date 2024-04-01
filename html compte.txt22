@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte Bancaire</title>
+</head>
+<body>
+
+<h1>Informations du Compte Bancaire</h1>
+
+<div>
+    <p><strong>Titulaire du compte:</strong> Alain Rodriguez</p>
+    <p><strong>Banque:</strong> Société Générale</p>
+    <p><strong>Solde:</strong> <span id="solde">50000</span>€</p>
+</div>
+
+<script>
+    // Code JavaScript pour les opérations sur le compte
+    function deposer() {
+        var montant = parseFloat(prompt("Entrez le montant à déposer:"));
+        var soldeActuel = parseFloat(document.getElementById("solde").textContent);
+        var nouveauSolde = soldeActuel + montant;
+        document.getElementById("solde").textContent = nouveauSolde.toFixed(2);
+        alert("Montant déposé avec succès !");
+    }
+
+    function retirer() {
+        var montant = parseFloat(prompt("Entrez le montant à retirer:"));
+        var soldeActuel = parseFloat(document.getElementById("solde").textContent);
+        if (montant > soldeActuel) {
+            alert("Fonds insuffisants !");
+        } else {
+            var nouveauSolde = soldeActuel - montant;
+            document.getElementById("solde").textContent = nouveauSolde.toFixed(2);
+            alert("Retrait effectué avec succès !");
+        }
+    }
+</script>
+
+<button onclick="deposer()">Déposer de l'argent</button>
+<button onclick="retirer()">Retirer de l'argent</button>
+
+</body>
+</html>
